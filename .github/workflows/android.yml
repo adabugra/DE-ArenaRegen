@@ -16,12 +16,14 @@ jobs:
     - name: set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
-        distribution: 'temurin'
+        java-version: '17'
+        distribution: 'AdoptOpenJDK'
         cache: gradle
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    - name: Decomp Workspace
+      run: ./gradlew setupDecompWorkspace
     - name: Build with Gradle
       run: ./gradlew build
     - uses: actions/upload-artifact@v2
